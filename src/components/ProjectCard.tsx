@@ -37,7 +37,7 @@ export default function ProjectCard({
     >
       <a
         href={href}
-        className={`card block w-full relative rounded-[32px] p-8 md:p-10 overflow-hidden cursor-pointer select-none transition-all duration-500 ease-out transform group-hover:-translate-y-2 group-hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.4)] ${bgColor} ${textColor}`}
+        className={`card block w-full relative rounded-[32px] p-5 xs:p-6 sm:p-8 md:p-10 overflow-hidden cursor-pointer select-none transition-all duration-500 ease-out transform group-hover:-translate-y-2 group-hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.4)] ${bgColor} ${textColor}`}
       >
         {flourishes && (
           <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-80 group-hover:scale-105 transition-transform duration-500">

@@ -127,7 +127,7 @@ export default function Home() {
     >
       <Header />
 
-      <main className="w-full max-w-[1280px] px-6 md:px-12 flex-1 flex flex-col items-center relative z-10">
+      <main className="w-full max-w-[1280px] px-4 sm:px-6 md:px-12 flex-1 flex flex-col items-center relative z-10">
         <FloatingStars />
 
         {/* Hero Section */}

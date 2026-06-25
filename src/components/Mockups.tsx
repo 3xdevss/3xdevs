@@ -19,7 +19,7 @@ export function AIMockup() {
         <div className="h-3 w-2/3 bg-slate-100 rounded-full" />
         <div className="h-3 w-1/2 bg-slate-100 rounded-full" />
 
-        <div className="absolute top-12 left-4 right-4 bg-white rounded-lg shadow-xl border border-indigo-100 p-3 animate-float-1 z-10 flex flex-col gap-2">
+        <div className="absolute top-12 left-4 right-4 bg-white rounded-lg shadow-xl border border-indigo-100 p-3 animate-float-1 z-10 flex flex-col gap-2 scale-90 sm:scale-100 origin-center">
           <div className="flex items-center gap-2 border-b border-slate-50 pb-2">
             <span className="text-[10px] font-bold text-indigo-600 tracking-wider uppercase">AI Assist</span>
             <span className="text-[10px] text-slate-400">✦</span>
@@ -49,7 +49,7 @@ export function AIMockup() {
 export function ArticlesMockup() {
   return (
     <div className="relative w-full h-[220px] bg-white rounded-lg shadow-xl border border-black/5 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl">
-      <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center justify-between px-3 shrink-0">
+      <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center justify-between px-2.5 sm:px-3 shrink-0">
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
           <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
@@ -61,7 +61,7 @@ export function ArticlesMockup() {
         </div>
       </div>
 
-      <div className="p-5 flex-1 flex flex-col gap-3">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col gap-3">
         <div className="self-start px-2 py-0.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-full text-[9px] font-semibold tracking-wide uppercase">
           Published
         </div>
@@ -93,29 +93,29 @@ export function PluginsMockup() {
         <div className="w-4 h-4 rounded bg-slate-800 flex items-center justify-center text-[9px] text-slate-400">⌘</div>
       </div>
 
-      <div className="flex-1 bg-slate-950/40 p-4 flex gap-4 overflow-hidden relative justify-center items-center">
-        <div className="w-28 h-28 bg-rose-50 border border-rose-200 rounded-lg p-2 shrink-0 flex flex-col justify-between shadow-md relative group hover:-translate-y-1 transition-transform">
-          <span className="text-[8px] text-rose-500 font-bold uppercase tracking-wider">Layer A</span>
+      <div className="flex-1 bg-slate-950/40 p-3 xs:p-4 flex gap-2 xs:gap-3 sm:gap-4 overflow-hidden relative justify-center items-center">
+        <div className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 bg-rose-50 border border-rose-200 rounded-lg p-1.5 xs:p-2 shrink-0 flex flex-col justify-between shadow-md relative group hover:-translate-y-1 transition-transform">
+          <span className="text-[7px] xs:text-[8px] text-rose-500 font-bold uppercase tracking-wider">Layer A</span>
           <div className="flex-1 flex items-center justify-center relative">
-            <div className="absolute w-10 h-10 border-2 border-rose-400/50 rounded-full -translate-x-2" />
-            <div className="absolute w-10 h-10 border-2 border-rose-400 rounded-full translate-x-2" />
+            <div className="absolute w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 border-2 border-rose-400/50 rounded-full -translate-x-1.5 sm:-translate-x-2" />
+            <div className="absolute w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 border-2 border-rose-400 rounded-full translate-x-1.5 sm:translate-x-2" />
           </div>
-          <div className="h-1 w-6 bg-rose-200 rounded self-center" />
+          <div className="h-0.5 sm:h-1 w-4 sm:w-6 bg-rose-200 rounded self-center" />
         </div>
 
-        <div className="w-28 h-28 bg-slate-800 border border-slate-700 rounded-lg p-2 shrink-0 flex flex-col justify-between shadow-md relative group hover:-translate-y-1 transition-transform">
-          <span className="text-[8px] text-indigo-400 font-bold uppercase tracking-wider">Layer B</span>
+        <div className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 bg-slate-800 border border-slate-700 rounded-lg p-1.5 xs:p-2 shrink-0 flex flex-col justify-between shadow-md relative group hover:-translate-y-1 transition-transform">
+          <span className="text-[7px] xs:text-[8px] text-indigo-400 font-bold uppercase tracking-wider">Layer B</span>
           <div className="flex-1 flex items-center justify-center relative">
-            <div className="absolute w-10 h-10 bg-indigo-600/35 rounded-full -translate-x-2 mix-blend-screen animate-pulse-soft" />
-            <div className="absolute w-10 h-10 bg-sky-500/35 rounded-full translate-x-2 mix-blend-screen" />
+            <div className="absolute w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 bg-indigo-600/35 rounded-full -translate-x-1.5 sm:-translate-x-2 mix-blend-screen animate-pulse-soft" />
+            <div className="absolute w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 bg-sky-500/35 rounded-full translate-x-1.5 sm:translate-x-2 mix-blend-screen" />
           </div>
-          <div className="h-1 w-6 bg-slate-600 rounded self-center" />
+          <div className="h-0.5 sm:h-1 w-4 sm:w-6 bg-slate-600 rounded self-center" />
         </div>
 
-        <div className="w-28 h-28 bg-sky-50 border border-sky-200 rounded-lg p-2 shrink-0 flex flex-col justify-between shadow-md relative group opacity-50 translate-x-4">
-          <span className="text-[8px] text-sky-500 font-bold uppercase tracking-wider">Layer C</span>
+        <div className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 bg-sky-50 border border-sky-200 rounded-lg p-1.5 xs:p-2 shrink-0 flex flex-col justify-between shadow-md relative group opacity-50 translate-x-2 xs:translate-x-3 sm:translate-x-4">
+          <span className="text-[7px] xs:text-[8px] text-sky-500 font-bold uppercase tracking-wider">Layer C</span>
           <div className="flex-1 flex items-center justify-center relative">
-            <div className="w-8 h-8 border-2 border-sky-300 rounded" />
+            <div className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 border-2 border-sky-300 rounded" />
           </div>
         </div>
       </div>
@@ -133,14 +133,14 @@ export function MobileMockup() {
   ];
 
   return (
-    <div className="relative w-full h-[220px] flex justify-center overflow-hidden">
-      <div className="relative w-[140px] h-[250px] bg-slate-900 rounded-[24px] border-[4px] border-slate-800 shadow-2xl overflow-hidden flex flex-col">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-3.5 bg-slate-900 rounded-b-lg z-20 flex justify-center items-center">
-          <div className="w-2 h-2 rounded-full bg-slate-800" />
+    <div className="relative w-full h-[220px] flex justify-center items-center overflow-hidden">
+      <div className="relative w-[140px] h-[210px] bg-slate-900 rounded-[20px] border-[3px] border-slate-800 shadow-2xl overflow-hidden flex flex-col">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-3 bg-slate-900 rounded-b-md z-20 flex justify-center items-center">
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-800" />
         </div>
 
-        <div className="flex-1 bg-emerald-900 flex flex-col overflow-hidden pt-4 relative">
-          <div className="flex justify-between px-3 pt-0.5 text-[7px] text-emerald-200 font-semibold z-10 shrink-0">
+        <div className="flex-1 bg-emerald-900 flex flex-col overflow-hidden pt-3.5 relative">
+          <div className="flex justify-between px-3 pt-0.5 text-[6.5px] text-emerald-200 font-semibold z-10 shrink-0">
             <span>9:41</span>
             <div className="flex gap-0.5 items-center">
               <span>📶</span>
@@ -148,32 +148,32 @@ export function MobileMockup() {
             </div>
           </div>
 
-          <div className="p-3 pb-2 text-center text-white shrink-0">
-            <h4 className="text-[9px] font-bold tracking-wide uppercase text-emerald-100">Help Scout</h4>
-            <div className="text-[12px] font-extrabold mt-0.5 text-white">Mobile App</div>
+          <div className="p-2 pb-1.5 text-center text-white shrink-0">
+            <h4 className="text-[8px] font-bold tracking-wide uppercase text-emerald-100">Help Scout</h4>
+            <div className="text-[11px] font-extrabold mt-0.5 text-white">Mobile App</div>
           </div>
 
-          <div className="flex items-center justify-center -space-x-1.5 py-1.5 bg-emerald-950/30">
+          <div className="flex items-center justify-center -space-x-1 py-1 bg-emerald-950/30">
             {avatars.map((av, idx) => (
               <div
                 key={idx}
-                className={`w-5 h-5 rounded-full ${av.bg} border-2 border-emerald-900 flex items-center justify-center text-[10px] shadow-sm transform hover:-translate-y-0.5 transition-transform`}
+                className={`w-4 h-4 rounded-full ${av.bg} border border-emerald-900 flex items-center justify-center text-[8px] shadow-sm transform hover:-translate-y-0.5 transition-transform`}
               >
                 {av.emoji}
               </div>
             ))}
           </div>
 
-          <div className="flex-1 bg-slate-50 p-2.5 flex flex-col gap-1.5 rounded-t-[14px] mt-1 shadow-inner overflow-hidden">
-            <div className="self-start max-w-[80%] bg-emerald-100 text-emerald-950 rounded-lg p-1.5 text-[7px] leading-snug font-medium">
+          <div className="flex-1 bg-slate-50 p-2 flex flex-col gap-1 rounded-t-[12px] mt-1 shadow-inner overflow-hidden">
+            <div className="self-start max-w-[85%] bg-emerald-100 text-emerald-950 rounded-lg p-1.5 text-[6.5px] leading-snug font-medium">
               Hey team, let's coordinate on the design update!
             </div>
-            <div className="self-end max-w-[80%] bg-slate-200 text-slate-800 rounded-lg p-1.5 text-[7px] leading-snug font-medium">
+            <div className="self-end max-w-[85%] bg-slate-200 text-slate-800 rounded-lg p-1.5 text-[6.5px] leading-snug font-medium">
               On it. Added layouts inside Figma.
             </div>
-            <div className="h-6 w-full border border-slate-200 rounded-full bg-white mt-auto flex items-center px-2">
-              <div className="h-1.5 w-12 bg-slate-200 rounded-full" />
-              <div className="ml-auto w-3 h-3 rounded-full bg-emerald-600 flex items-center justify-center text-[5px] text-white">➜</div>
+            <div className="h-5 w-full border border-slate-200 rounded-full bg-white mt-auto flex items-center px-2">
+              <div className="h-1 w-10 bg-slate-200 rounded-full" />
+              <div className="ml-auto w-2.5 h-2.5 rounded-full bg-emerald-600 flex items-center justify-center text-[4px] text-white">➜</div>
             </div>
           </div>
         </div>
