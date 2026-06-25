@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-pink: #c099e3;
+  --color-mint: #a4ebd9;
+  --color-rust: #f4be9b;
+  --color-babyblue: #a3d8f4;
+  --color-text-bold: #1c1c1c;
+  --color-white: #ffffff;
+  --color-bg-dark: #061109;
+  --color-bg-light: #204523;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bodyFont: var(--font-inter), sans-serif;
+  --displayFont: var(--font-outfit), sans-serif;
+  --16px: 16px;
+  
+  --background: radial-gradient(circle at 50% 0%, var(--color-bg-light) 0%, var(--color-bg-dark) 80%);
+  --color-text-primary: rgba(255, 255, 255, 0.85);
+  
+  --zindex-content: 10;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-dark);
+  background-image: var(--background);
+  color: var(--color-text-primary);
+  font-family: var(--bodyFont);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--displayFont);
+}
+
+/* Float Animation */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes float-slower {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-3deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-slower 8s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* Card styles from Svelte template classes */
+.cards-content {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .cards-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Utility to override column spans responsively */
+.card-wrapper-col {
+  grid-column: var(--grid-column-start, 1) / span var(--grid-column-span, 25);
+}
+
+@media (max-width: 1024px) {
+  .card-wrapper-col {
+    grid-column: 1 / -1 !important;
+  }
 }
