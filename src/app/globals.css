@@ -1,29 +1,77 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Acorn";
+  src: url("/fonts/acorn.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Acorn", serif;
+}
+
 :root {
-  --color-pink: #c099e3;
-  --color-mint: #a4ebd9;
-  --color-rust: #f4be9b;
-  --color-babyblue: #a3d8f4;
-  --color-text-bold: #1c1c1c;
-  --color-white: #ffffff;
-  --color-bg-dark: #061109;
-  --color-bg-light: #204523;
+  /* Light Mode Colors */
+  --bg-light: #f4f3ec;
+  --bg-light-secondary: #eae9e0;
+  --text-light-title: #2d2c2a;
+  --text-light-primary: #3d3c39;
+  --text-light-secondary: #706e68;
+  --border-light: #e2e1d7;
+  --accent-light: #3b7a57;
+  --pill-light-border: rgba(0, 0, 0, 0.08);
+  --pill-light-bg: rgba(0, 0, 0, 0.04);
+  --pill-light-active: rgba(0, 0, 0, 0.1);
+
+  /* Dark Mode Colors */
+  --bg-dark: #121c17;
+  --bg-dark-secondary: #1a2a22;
+  --text-dark-title: #9bf0c9;
+  --text-dark-primary: #a7f3d0;
+  --text-dark-secondary: #608d75;
+  --border-dark: #1c3327;
+  --accent-dark: #9bf0c9;
+  --pill-dark-border: rgba(155, 240, 201, 0.12);
+  --pill-dark-bg: rgba(155, 240, 201, 0.06);
+  --pill-dark-active: rgba(155, 240, 201, 0.2);
+
+  /* Default to dark mode */
+  --bg-primary: var(--bg-dark);
+  --bg-secondary: var(--bg-dark-secondary);
+  --text-title: var(--text-dark-title);
+  --text-primary: var(--text-dark-primary);
+  --text-secondary: var(--text-dark-secondary);
+  --border-primary: var(--border-dark);
+  --accent-color: var(--accent-dark);
+  --pill-border: var(--pill-dark-border);
+  --pill-bg: var(--pill-dark-bg);
+  --pill-active-bg: var(--pill-dark-active);
 
   --bodyFont: var(--font-inter), sans-serif;
-  --displayFont: var(--font-outfit), sans-serif;
+  --displayFont: "Acorn", serif;
   --16px: 16px;
-  
-  --background: radial-gradient(circle at 50% 0%, var(--color-bg-light) 0%, var(--color-bg-dark) 80%);
-  --color-text-primary: rgba(255, 255, 255, 0.85);
-  
   --zindex-content: 10;
 }
 
+/* Light Mode */
+body.light-mode {
+  --bg-primary: var(--bg-light);
+  --bg-secondary: var(--bg-light-secondary);
+  --text-title: var(--text-light-title);
+  --text-primary: var(--text-light-primary);
+  --text-secondary: var(--text-light-secondary);
+  --border-primary: var(--border-light);
+  --accent-color: var(--accent-light);
+  --pill-border: var(--pill-light-border);
+  --pill-bg: var(--pill-light-bg);
+  --pill-active-bg: var(--pill-light-active);
+}
+
 body {
-  background: var(--color-bg-dark);
-  background-image: var(--background);
-  color: var(--color-text-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--bodyFont);
   min-height: 100vh;
   margin: 0;
@@ -32,11 +80,15 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--displayFont);
 }
+
+
+
 
 /* Float Animation */
 @keyframes float-slow {

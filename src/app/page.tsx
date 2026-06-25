@@ -13,10 +13,10 @@ import {
   DropletteMockup,
 } from "@/components/Mockups";
 
-function DocFlourish({ className = "" }: { className?: string }) {
+function DocFlourish({ className = "", isDarkMode = true }: { className?: string; isDarkMode?: boolean }) {
   return (
     <svg
-      className={`absolute w-36 h-36 text-black/5 -top-12 -left-8 transform -rotate-12 ${className}`}
+      className={`absolute w-36 h-36 ${isDarkMode ? "text-black/5" : "text-black/8"} -top-12 -left-8 transform -rotate-12 ${className}`}
       fill="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
@@ -26,11 +26,11 @@ function DocFlourish({ className = "" }: { className?: string }) {
   );
 }
 
-function FoldersFlourish() {
+function FoldersFlourish({ isDarkMode = true }: { isDarkMode?: boolean }) {
   return (
     <>
       <svg
-        className="absolute w-24 h-24 text-black/5 -top-8 -left-4 transform rotate-12"
+        className={`absolute w-24 h-24 ${isDarkMode ? "text-black/5" : "text-black/8"} -top-8 -left-4 transform rotate-12`}
         fill="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ function FoldersFlourish() {
         <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
       </svg>
       <svg
-        className="absolute w-28 h-28 text-black/5 -top-10 -right-8 transform -rotate-6"
+        className={`absolute w-28 h-28 ${isDarkMode ? "text-black/5" : "text-black/8"} -top-10 -right-8 transform -rotate-6`}
         fill="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -49,11 +49,11 @@ function FoldersFlourish() {
   );
 }
 
-function FigmaFlourish() {
+function FigmaFlourish({ isDarkMode = true }: { isDarkMode?: boolean }) {
   return (
     <>
       <svg
-        className="absolute w-24 h-24 text-black/5 bottom-8 -left-8 transform rotate-45"
+        className={`absolute w-24 h-24 ${isDarkMode ? "text-black/5" : "text-black/8"} bottom-8 -left-8 transform rotate-45`}
         fill="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ function FigmaFlourish() {
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
       </svg>
       <svg
-        className="absolute w-32 h-32 text-black/5 -top-12 right-12 transform -rotate-12"
+        className={`absolute w-32 h-32 ${isDarkMode ? "text-black/5" : "text-black/8"} -top-12 right-12 transform -rotate-12`}
         fill="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -72,10 +72,10 @@ function FigmaFlourish() {
   );
 }
 
-function WaveFlourish() {
+function WaveFlourish({ isDarkMode = true }: { isDarkMode?: boolean }) {
   return (
     <svg
-      className="absolute w-36 h-36 text-black/5 -top-8 -left-8"
+      className={`absolute w-36 h-36 ${isDarkMode ? "text-black/5" : "text-black/8"} -top-8 -left-8`}
       fill="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
@@ -89,15 +89,41 @@ export default function Home() {
   const [themeMode, setThemeMode] = useState<"emerald" | "violet" | "indigo">("emerald");
   const [tickIndex, setTickIndex] = useState(6);
 
-  const themeGradients = {
+  // Determine if light mode (0-5) or dark mode (6-11)
+  const isDarkMode = tickIndex >= 6;
+
+  // Update document class for light/dark mode
+  React.useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+    }
+  }, [isDarkMode]);
+
+  const lightModeGradients = {
+    emerald: "from-[#e6f7ef] to-[#f4f3ec]",
+    violet: "from-[#f3e6fa] to-[#f4f3ec]",
+    indigo: "from-[#e6f1f7] to-[#f4f3ec]",
+  };
+
+  const darkModeGradients = {
     emerald: "from-[#204523] to-[#061109]",
     violet: "from-[#351c4a] to-[#0c0512]",
     indigo: "from-[#1c2e4a] to-[#050b12]",
   };
 
+  const themeGradients = isDarkMode ? darkModeGradients : lightModeGradients;
+  const accentColor = isDarkMode ? "#9bf0c9" : "#3b7a57";
+  const heroTextColor = isDarkMode ? "text-[#abf7da]" : "text-[#2d2c2a]";
+  const secondaryTextColor = isDarkMode ? "text-emerald-100/70" : "text-emerald-900/70";
+  const tickActiveColor = isDarkMode ? "bg-[#abf7da]" : "bg-[#3b7a57]";
+  const tickInactiveColor = isDarkMode ? "bg-white/30 hover:bg-white/70" : "bg-black/20 hover:bg-black/40";
+  const tickLabelColor = isDarkMode ? "text-[#abf7da]" : "text-[#3b7a57]";
+
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-between pb-12 transition-all duration-1000 bg-gradient-to-b ${themeGradients[themeMode]}`}
+      className={`min-h-screen flex flex-col items-center justify-between pb-12 transition-all duration-500 bg-gradient-to-b ${themeGradients[themeMode]}`}
     >
       <Header />
 
@@ -105,14 +131,14 @@ export default function Home() {
         <FloatingStars />
 
         {/* Hero Section */}
-        <section className="text-center py-20 md:py-22 max-w-2xl flex flex-col items-center gap-6 relative select-none">
-          <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-[1.05] text-[#abf7da] drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display">
+        <section className="text-center pt-40 md:pt-42 max-w-2xl flex flex-col items-center gap-6 relative select-none">
+          <h1 className={`text-5xl md:text-7xl font-black tracking-tight leading-[1.05] ${heroTextColor} drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display`}>
             Hi. We&apos;re 3xdevs.
             <br />
-            <span className="text-white opacity-95">You Need it.. We Build it..</span>
+            <span className={isDarkMode ? "text-white opacity-95" : "text-[#2d2c2a] opacity-90"}>You Need it.. We Build it..</span>
           </h1>
 
-          <p className="text-sm md:text-base leading-relaxed text-emerald-100/70 font-medium max-w-md mt-4">
+          <p className={`text-sm md:text-base leading-relaxed ${isDarkMode ? "text-emerald-100/70" : "text-emerald-900/70"} font-medium max-w-md mt-4`}>
             We&apos;re passionate about crafting experiences that are engaging,
             and user-centric.
           </p>
@@ -127,7 +153,7 @@ export default function Home() {
               textColor="text-[#2b173d]"
               gridStart={1}
               gridSpan={9}
-              flourishes={<DocFlourish />}
+              flourishes={<DocFlourish isDarkMode={isDarkMode} />}
             >
               <AIMockup />
             </ProjectCard>
@@ -139,7 +165,7 @@ export default function Home() {
               textColor="text-[#103b30]"
               gridStart={11}
               gridSpan={15}
-              flourishes={<FoldersFlourish />}
+              flourishes={<FoldersFlourish isDarkMode={isDarkMode} />}
             >
               <ArticlesMockup />
             </ProjectCard>
@@ -151,7 +177,7 @@ export default function Home() {
               textColor="text-[#4f2a11]"
               gridStart={1}
               gridSpan={15}
-              flourishes={<FigmaFlourish />}
+              flourishes={<FigmaFlourish isDarkMode={isDarkMode} />}
             >
               <PluginsMockup />
             </ProjectCard>
@@ -163,7 +189,7 @@ export default function Home() {
               textColor="text-[#12384c]"
               gridStart={17}
               gridSpan={9}
-              flourishes={<WaveFlourish />}
+              flourishes={<WaveFlourish isDarkMode={isDarkMode} />}
             >
               <MobileMockup />
             </ProjectCard>
@@ -172,10 +198,10 @@ export default function Home() {
 
         <section id="play" className="w-full py-16 md:py-28 flex flex-col items-center">
           <div className="text-center max-w-2xl flex flex-col items-center gap-4 mb-16 select-none">
-            <h2 className="text-4xl md:text-7xl font-black text-[#abf7da] leading-none">
+            <h2 className={`text-4xl md:text-7xl font-black ${heroTextColor} leading-none`}>
               In Progress.
             </h2>
-            <p className="text-xs md:text-sm leading-relaxed text-emerald-100/60 font-medium max-w-md">
+            <p className={`text-xs md:text-sm leading-relaxed ${isDarkMode ? "text-emerald-100/60" : "text-emerald-900/60"} font-medium max-w-md`}>
               Work in various states of design and development, from side projects,
               to in-flight product design and development.
             </p>
@@ -208,14 +234,14 @@ export default function Home() {
       </main>
 
       <footer className="w-full max-w-[1280px] px-6 md:px-12 mt-16 md:mt-24 pt-12 border-t border-white/5 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between gap-12 text-sm text-emerald-100/60 font-medium">
+        <div className={`flex flex-col md:flex-row justify-between gap-12 text-sm ${isDarkMode ? "text-emerald-100/60" : "text-emerald-900/60"} font-medium`}>
           <div className="flex flex-col gap-1.5 select-none">
-            <p className="text-white text-base font-semibold">3xdevs</p>
-            <p className="hover:text-white transition-colors cursor-pointer">Not just devs</p>
+            <p className={`${isDarkMode ? "text-white" : "text-[#2d2c2a]"} text-base font-semibold`}>3xdevs</p>
+            <p className={isDarkMode ? "hover:text-white" : "hover:text-[#2d2c2a]"} >Not just devs</p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-widest opacity-80">
+            <h4 className={`${isDarkMode ? "text-white" : "text-[#2d2c2a]"} text-xs font-bold uppercase tracking-widest opacity-80`}>
               Elsewhere
             </h4>
             <div className="flex flex-col gap-1.5">
@@ -223,7 +249,7 @@ export default function Home() {
                 <a
                   key={link}
                   href="#"
-                  className="hover:text-white transition-colors self-start"
+                  className={isDarkMode ? "hover:text-white" : "hover:text-[#2d2c2a]"}
                 >
                   {link}
                 </a>
@@ -232,12 +258,12 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-widest opacity-80">
+            <h4 className={`${isDarkMode ? "text-white" : "text-[#2d2c2a]"} text-xs font-bold uppercase tracking-widest opacity-80`}>
               Contact
             </h4>
             <a
               href="mailto:hello@example.com"
-              className="hover:text-white transition-colors self-start"
+              className={isDarkMode ? "hover:text-white" : "hover:text-[#2d2c2a]"}
             >
               Message
             </a>
@@ -245,15 +271,19 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-col md:flex-row items-center gap-6 mt-16 select-none">
-          <div className="flex gap-2 bg-black/40 border border-white/5 p-1 rounded-full shrink-0">
+          <div className={`flex gap-2 ${isDarkMode ? "bg-black/40 border border-white/5" : "bg-white/40 border border-black/10"} p-1 rounded-full shrink-0 transition-colors`}>
             {(["emerald", "violet", "indigo"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setThemeMode(t)}
                 className={`px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all ${
                   themeMode === t
-                    ? "bg-[#abf7da] text-[#061109] shadow"
-                    : "text-white/60 hover:text-white"
+                    ? isDarkMode
+                      ? "bg-[#abf7da] text-[#061109] shadow"
+                      : "bg-[#3b7a57] text-white shadow"
+                    : isDarkMode
+                    ? "text-white/60 hover:text-white"
+                    : "text-black/60 hover:text-black"
                 }`}
               >
                 {t}
@@ -262,19 +292,19 @@ export default function Home() {
           </div>
 
           <div className="flex-1 w-full flex items-center gap-2">
-            <span className="text-[10px] font-bold text-[#abf7da] shrink-0">01</span>
-            <div className="flex-1 h-[2px] bg-white/10 rounded-full relative flex justify-between items-center px-1">
+            <span className={`text-[10px] font-bold ${tickLabelColor} shrink-0`}>☀️</span>
+            <div className={`flex-1 h-[2px] ${isDarkMode ? "bg-white/10" : "bg-black/10"} rounded-full relative flex justify-between items-center px-1 transition-colors`}>
               {Array.from({ length: 12 }).map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setTickIndex(idx)}
                   className={`w-1 h-3 rounded-full transition-all duration-300 ${
-                    idx === tickIndex ? "bg-[#abf7da] h-5 w-1.5 shadow" : "bg-white/30 hover:bg-white/70"
+                    idx === tickIndex ? `${tickActiveColor} h-5 w-1.5 shadow` : tickInactiveColor
                   }`}
                 />
               ))}
             </div>
-            <span className="text-[10px] font-bold text-white/40 shrink-0">12</span>
+            <span className={`text-[10px] font-bold ${isDarkMode ? "text-white/40" : "text-black/40"} shrink-0`}>🌙</span>
           </div>
         </div>
       </footer>
