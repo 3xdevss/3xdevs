@@ -52,6 +52,11 @@
   --gradient-from: #204523;
   --gradient-to: #061109;
 
+  --bg-gradient-1: #0c2217;
+  --bg-gradient-2: #082829;
+  --bg-gradient-3: #04160d;
+  --bg-gradient-4: #121528;
+
   --bodyFont: var(--font-inter), sans-serif;
   --displayFont: "Acorn", serif;
   --16px: 16px;
@@ -64,6 +69,10 @@ body,
 body.theme-emerald {
   --gradient-from: #204523;
   --gradient-to: #061109;
+  --bg-gradient-1: #0c2217;
+  --bg-gradient-2: #082829;
+  --bg-gradient-3: #04160d;
+  --bg-gradient-4: #121528;
 }
 
 body.light-mode,
@@ -81,6 +90,10 @@ body.light-mode.theme-emerald {
   --gradient-from: #e6f7ef;
   --gradient-to: #f4f3ec;
   --flourish-color: rgba(0, 0, 0, 0.08);
+  --bg-gradient-1: #f0faf6;
+  --bg-gradient-2: #e2f5ee;
+  --bg-gradient-3: #f4f3ec;
+  --bg-gradient-4: #e8edf7;
 }
 
 /* Violet Theme */
@@ -97,6 +110,10 @@ body.theme-violet {
   --pill-active-bg: rgba(233, 203, 247, 0.2);
   --gradient-from: #351c4a;
   --gradient-to: #0c0512;
+  --bg-gradient-1: #1b0d2d;
+  --bg-gradient-2: #0e122b;
+  --bg-gradient-3: #1a081d;
+  --bg-gradient-4: #2e112d;
 }
 
 body.light-mode.theme-violet {
@@ -112,6 +129,10 @@ body.light-mode.theme-violet {
   --pill-active-bg: rgba(143, 76, 176, 0.1);
   --gradient-from: #f3e6fa;
   --gradient-to: #f4f3ec;
+  --bg-gradient-1: #faf5ff;
+  --bg-gradient-2: #f0e1fb;
+  --bg-gradient-3: #f4f3ec;
+  --bg-gradient-4: #fae8f5;
 }
 
 /* Indigo Theme */
@@ -128,6 +149,10 @@ body.theme-indigo {
   --pill-active-bg: rgba(203, 219, 247, 0.2);
   --gradient-from: #1c2e4a;
   --gradient-to: #050b12;
+  --bg-gradient-1: #0d172d;
+  --bg-gradient-2: #0a101d;
+  --bg-gradient-3: #190e2d;
+  --bg-gradient-4: #0b1a30;
 }
 
 body.light-mode.theme-indigo {
@@ -143,10 +168,17 @@ body.light-mode.theme-indigo {
   --pill-active-bg: rgba(76, 118, 176, 0.1);
   --gradient-from: #e6f1f7;
   --gradient-to: #f4f3ec;
+  --bg-gradient-1: #f5f8ff;
+  --bg-gradient-2: #e1e9fb;
+  --bg-gradient-3: #f4f3ec;
+  --bg-gradient-4: #e8f0fe;
 }
 
+
 body {
-  background-color: var(--bg-primary);
+  background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
+  background-size: 400% 400%;
+  animation: gradient-motion 15s ease infinite;
   color: var(--text-primary);
   font-family: var(--bodyFont);
   min-height: 100vh;
@@ -156,8 +188,23 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: color 0.5s ease;
 }
+
+@keyframes gradient-motion {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 h1,
 h2,
@@ -350,4 +397,9 @@ body.light-mode .blog-content-html h3 {
 body.light-mode .blog-content-html p strong,
 body.light-mode .blog-content-html ul li strong {
   color: #2d2c2a;
+}
+
+.bg-gradient-to-b {
+  background-image: none !important;
+  background-color: transparent !important;
 }
