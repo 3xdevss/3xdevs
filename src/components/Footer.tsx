@@ -8,7 +8,7 @@ interface FooterProps {
   showLinks?: boolean;
 }
 
-export default function Footer({ showLinks = false }: FooterProps) {
+export default function Footer({ showLinks = true }: FooterProps) {
   const {
     themeMode,
     setThemeMode,
