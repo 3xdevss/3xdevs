@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/hooks/useTheme";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,9 +24,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
-      <body className="antialiased">
-        {children}
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('themeMode');
+                  const savedTickIndex = localStorage.getItem('tickIndex');
+                  const isDarkMode = savedTickIndex ? parseInt(savedTickIndex, 10) >= 6 : true;
+                  
+                  if (savedTheme) {
+                    document.body.classList.add('theme-' + savedTheme);
+                  } else {
+                    document.body.classList.add('theme-emerald');
+                  }
+                  
+                  if (!isDarkMode) {
+                    document.body.classList.add('light-mode');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

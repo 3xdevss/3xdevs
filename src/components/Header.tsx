@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -8,6 +8,24 @@ import { usePathname } from 'next/navigation';
 const Header: React.FC = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const tabs = [
     { id: 'prebuilt', label: 'Prebuilt', href: '/prebuilt' },
@@ -26,7 +44,7 @@ const Header: React.FC = () => {
   const activeTab = getActiveTab();
 
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <nav className="fixed top-6  left-0 right-0 z-50 flex justify-center px-4">
       {/* Desktop view */}
       <div className="hidden md:flex items-center gap-1 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/30 px-2.5 py-1.5 shadow-md backdrop-blur-md transition-colors duration-300">
         {tabs.map((tab) => {
@@ -59,7 +77,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile view */}
-      <div className="flex md:hidden flex-col w-full max-w-sm relative">
+      <div ref={menuRef} className="flex md:hidden flex-col w-full max-w-sm relative">
         <div className="flex items-center justify-between w-full rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/30 px-5 py-3 shadow-md backdrop-blur-md transition-colors duration-300">
           <Link 
             href="/" 
