@@ -213,25 +213,22 @@ export function DoodlerMockup() {
         <div className="flex gap-1.5 border-r border-slate-700/80 pr-3">
           <button
             onClick={() => setTool("pen")}
-            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${
-              tool === "pen" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
-            }`}
+            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${tool === "pen" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
+              }`}
           >
             ✏️
           </button>
           <button
             onClick={() => setTool("brush")}
-            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${
-              tool === "brush" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
-            }`}
+            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${tool === "brush" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
+              }`}
           >
             🖌️
           </button>
           <button
             onClick={() => setTool("eraser")}
-            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${
-              tool === "eraser" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
-            }`}
+            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-colors ${tool === "eraser" ? "bg-slate-700 text-white" : "text-slate-400 hover:text-white"
+              }`}
           >
             🧽
           </button>
@@ -242,9 +239,8 @@ export function DoodlerMockup() {
             <button
               key={c.name}
               onClick={() => setActiveColor(c.bg)}
-              className={`w-4 h-4 rounded-full ${c.bg} transition-transform ${
-                activeColor === c.bg ? "scale-125 ring-2 ring-white ring-offset-2 ring-offset-slate-900" : "hover:scale-110"
-              }`}
+              className={`w-4 h-4 rounded-full ${c.bg} transition-transform ${activeColor === c.bg ? "scale-125 ring-2 ring-white ring-offset-2 ring-offset-slate-900" : "hover:scale-110"
+                }`}
             />
           ))}
         </div>
@@ -298,9 +294,8 @@ export function DropletteMockup() {
                 )}
                 <button
                   onClick={() => setSelectedDot(index)}
-                  className={`w-6 h-6 rounded-full ${d.color} transition-all duration-300 relative z-10 ${
-                    isSelected ? `scale-125 shadow-lg ${d.glow} ring-2 ring-white` : "opacity-60 hover:opacity-100 hover:scale-105"
-                  }`}
+                  className={`w-6 h-6 rounded-full ${d.color} transition-all duration-300 relative z-10 ${isSelected ? `scale-125 shadow-lg ${d.glow} ring-2 ring-white` : "opacity-60 hover:opacity-100 hover:scale-105"
+                    }`}
                 />
               </div>
             );
