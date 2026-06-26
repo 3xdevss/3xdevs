@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Seán Halpin · Designer Portfolio",
-  description: "I'm passionate about crafting experiences that are engaging, accessible, and user-centric.",
+  title: "Hi. We're 3xdevs.",
+  description: "We're passionate about crafting experiences that are engaging, and user-centric.",
 };
 
 export default function RootLayout({

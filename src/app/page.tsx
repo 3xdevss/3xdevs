@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingStars from "@/components/FloatingStars";
@@ -97,21 +98,54 @@ export default function Home() {
     >
       <Header />
 
-      <main className="w-full max-w-[1280px] px-4 sm:px-6 md:px-12 flex-1 flex flex-col items-center relative z-10">
+      <main className="w-full max-w-[1280px] px-4 sm:px-6 md:px-12 flex-1 flex flex-col items-center relative z-10 mt-2">
         <FloatingStars />
 
-        {/* Hero Section */}
-        <section className="text-center pt-40 md:pt-42 max-w-2xl flex flex-col items-center gap-6 relative selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] text-[var(--text-title)] drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display">
-            Hi. We&apos;re 3xdevs.
+        {/* Hero Section top-[26%] md:top-[9%] */}
+        <section className="w-full flex flex-col items-center text-center gap-6 md:gap-7 pt-40 md:pt-48 pb-16 md:pb-24 relative z-10 selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
+            <div className="absolute top-[14.5%] md:top-[8%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none contact-watermark ">
+              3xDevs
+            </div>
+          {/* Tech Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-color)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-color)]"></span>
+            </span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+              Developer Agency of the Future
+            </span>
+          </div>
+
+          <h1 className="text-6xl md:text-8xl lg:text-[84px] font-black tracking-tight leading-[1.02] text-[var(--text-title)] drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display">
+            Hi. We&apos;re 3xdevs
             <br />
-            <span className="hero-subtitle">You Need it.. We Build it..</span>
+            <span className="hero-subtitle text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-color)] to-[var(--text-primary)]">You Need it.. <br className="hidden xs:inline" /> We Build it..</span>
           </h1>
 
-          <p className="text-sm md:text-base leading-relaxed text-[var(--text-secondary)] font-medium max-w-md mt-4">
-            We&apos;re passionate about crafting experiences that are engaging,
-            and user-centric.
+          <p className="text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl mt-2">
+            We&apos;re passionate about crafting high-end digital experiences, custom WebGL interfaces, next-gen mobile apps, and robust systems that are engaging, performant, and user-centric.
           </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
+            <Link
+              href="/contact-us"
+              className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl bg-[var(--accent-color)] text-[var(--bg-primary)] hover:text-[var(--bg-primary)] font-bold text-sm tracking-wide shadow-[0_10px_20px_-5px_var(--accent-color)]/30 hover:shadow-[0_15px_30px_-5px_var(--accent-color)]/45 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2 group"
+            >
+              Let&apos;s Build Something
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+
+            <a
+              href="#work"
+              className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--text-secondary)] text-[var(--text-primary)] hover:text-[var(--text-title)] font-bold text-sm tracking-wide hover:bg-[var(--bg-secondary)]/50 transition-all duration-300 active:scale-[0.98] cursor-pointer"
+            >
+              Explore Work
+            </a>
+          </div>
         </section>
 
         <section id="work" className="w-full py-12">
