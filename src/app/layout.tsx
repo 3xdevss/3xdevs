@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/hooks/useTheme";
+import FloatingRobot from "@/components/FloatingRobot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -51,6 +52,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           {children}
+          <FloatingRobot />
         </ThemeProvider>
       </body>
     </html>
