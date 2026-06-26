@@ -296,13 +296,11 @@ h6 {
 }
 
 .hero-subtitle {
-  color: #ffffff;
   opacity: 0.95;
   transition: color 0.5s ease, opacity 0.5s ease;
 }
 
 body.light-mode .hero-subtitle {
-  color: #2d2c2a;
   opacity: 0.90;
 }
 

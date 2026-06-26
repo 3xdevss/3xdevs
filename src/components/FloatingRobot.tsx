@@ -13,7 +13,7 @@ export default function FloatingRobot() {
   const [isDismissed, setIsDismissed] = useState(false);
 
   const mountRef = useRef<HTMLDivElement>(null);
-  
+
   // Dragging and 360-degree rotation states
   const isDragging = useRef(false);
   const startMousePos = useRef({ x: 0, y: 0 });
@@ -50,7 +50,7 @@ export default function FloatingRobot() {
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    
+
     // Orthographic camera for clean 3D isometric representation
     const camera = new THREE.OrthographicCamera(-2.5, 2.5, 2.5, -2.5, 0.1, 100);
     camera.position.set(0, 0, 10);
@@ -190,7 +190,7 @@ export default function FloatingRobot() {
     droneGroup.add(flame);
 
     // ---- Animation Loop ----
-    
+
     let animationFrameId: number;
     let clock = new THREE.Clock();
     const tempColor = new THREE.Color();
@@ -199,12 +199,12 @@ export default function FloatingRobot() {
       const accent = getComputedStyle(document.body).getPropertyValue("--accent-color").trim();
       if (accent) {
         tempColor.set(accent);
-        
+
         // Apply website's active theme accent color dynamically
         glowMaterial.color.copy(tempColor);
         thrusterFlameMaterial.color.copy(tempColor);
         thrusterFlameMaterial.emissive.copy(tempColor);
-        
+
         // Accent dir light matches the active theme hue
         dirLight2.color.copy(tempColor);
       }
@@ -248,7 +248,7 @@ export default function FloatingRobot() {
         // Slow idle drift panning yaw/pitch so it's not totally static
         const idleYaw = -0.4 + Math.sin(elapsed * 0.3) * 0.18;
         const idlePitch = 0.15 + Math.cos(elapsed * 0.25) * 0.06;
-        
+
         targetRotation.current.y = THREE.MathUtils.lerp(targetRotation.current.y, idleYaw, 0.02);
         targetRotation.current.x = THREE.MathUtils.lerp(targetRotation.current.x, idlePitch, 0.02);
       }
@@ -276,7 +276,7 @@ export default function FloatingRobot() {
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
       }
-      
+
       coreGeom.dispose();
       topShellGeom.dispose();
       bottomShellGeom.dispose();
@@ -288,12 +288,12 @@ export default function FloatingRobot() {
       wingGeom.dispose();
       thrusterNozzleGeom.dispose();
       flameGeom.dispose();
-      
+
       darkChrome.dispose();
       matteSteel.dispose();
       glowMaterial.dispose();
       thrusterFlameMaterial.dispose();
-      
+
       renderer.dispose();
     };
   }, [isContactPage]);
@@ -304,7 +304,7 @@ export default function FloatingRobot() {
     pointerStartTime.current = Date.now();
     startMousePos.current = { x: e.clientX, y: e.clientY };
     startRobotRotation.current = { x: targetRotation.current.x, y: targetRotation.current.y };
-    
+
     if (mountRef.current) {
       mountRef.current.setPointerCapture(e.pointerId);
     }
@@ -347,7 +347,7 @@ export default function FloatingRobot() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-end select-none pointer-events-none">
       <div className="relative flex flex-col items-end pointer-events-auto">
-        
+
         {/* Speech Bubble */}
         <AnimatePresence>
           {showBubble && (
