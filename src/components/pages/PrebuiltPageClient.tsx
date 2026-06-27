@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import FloatingStars from "@/components/FloatingStars";
 import { motion } from "framer-motion";
 
 export default function PrebuiltPageClient() {
@@ -64,7 +63,8 @@ export default function PrebuiltPageClient() {
       </section>
 
       {/* Philosophy Principles Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full z-10 relative mb-20 px-2 sm:px-0">
+      <section className="w-full py-16 md:py-24 border-t border-[var(--border-primary)] mt-8 md:mt-16 z-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-2 sm:px-0">
         {principles.map((p, idx) => (
           <div
             key={idx}
@@ -86,6 +86,7 @@ export default function PrebuiltPageClient() {
             </div>
           </div>
         ))}
+        </div>
       </section>
 
       {/* Call to Action Section */}

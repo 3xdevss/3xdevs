@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingStars from "@/components/FloatingStars";
-import ContactForm from "@/components/ContactForm";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import FloatingStars from "@/components/ui/FloatingStars";
+import ContactForm from "@/components/pages/ContactForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/hooks/useTheme";
-import FloatingRobot from "@/components/FloatingRobot";
-import CursorGlow from "@/components/CursorGlow";
+import FloatingRobot from "@/components/ui/FloatingRobot";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 const inter = Inter({
   variable: "--font-inter",

@@ -3,10 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingStars from "@/components/FloatingStars";
-import ProjectCard from "@/components/ProjectCard";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import FloatingStars from "@/components/ui/FloatingStars";
+import ProjectCard from "@/components/ui/ProjectCard";
 import {
   AIMockup,
   ArticlesMockup,
@@ -14,9 +14,9 @@ import {
   MobileMockup,
   DoodlerMockup,
   DropletteMockup,
-} from "@/components/Mockups";
-import FaqSection from "@/components/FaqSection";
-import CtaSection from "@/components/CtaSection";
+} from "@/components/mockups/Mockups";
+import FaqSection from "@/components/sections/FaqSection";
+import CtaSection from "@/components/sections/CtaSection";
 
 function DocFlourish({ className = "" }: { className?: string }) {
   return (
@@ -113,53 +113,53 @@ export default function HomePageClient() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex flex-col items-center gap-6 relative z-10 text-center"
             >
-            {/* Tech Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-pill-active-dot)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--theme-pill-active-dot)]"></span>
-              </span>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-                Developer Agency of the Future
-              </span>
-            </div>
+              {/* Tech Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-pill-active-dot)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--theme-pill-active-dot)]"></span>
+                </span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                  Developer Agency of the Future
+                </span>
+              </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[84px] font-black tracking-tight leading-[1.02] text-[var(--text-title)] drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display">
-              Hi. We&apos;re 3xdevs
-              <br />
-              <span className="hero-subtitle text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-color)] to-[var(--text-primary)]">
-                You Need it.. <br className="hidden xs:inline" /> We Build it..
-              </span>
-            </h1>
+              <h1 className="text-5xl md:text-7xl lg:text-[84px] font-black tracking-tight leading-[1.02] text-[var(--text-title)] drop-shadow-[0_4px_12px_rgba(171,247,218,0.15)] font-display">
+                Hi. We&apos;re 3xdevs
+                <br />
+                <span className="hero-subtitle text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-color)] to-[var(--text-primary)]">
+                  You Need it.. We Build it..
+                </span>
+              </h1>
 
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl mt-2">
-              We&apos;re passionate about crafting high-end digital experiences, custom WebGL interfaces, next-gen mobile apps, and robust systems that are engaging, performant, and user-centric.
-            </p>
+              <p className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl mt-2 px-4">
+                We&apos;re passionate about crafting high-end digital experiences, custom WebGL interfaces, next-gen mobile apps, and robust systems that are engaging, performant, and user-centric.
+              </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-              <Link
-                href="/contact-us"
-                className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl bg-[var(--accent-color)] text-[var(--bg-primary)] hover:text-[var(--bg-primary)] font-bold text-sm tracking-wide shadow-[0_10px_20px_-5px_var(--accent-color)]/30 hover:shadow-[0_15px_30px_-5px_var(--accent-color)]/45 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2 group"
-              >
-                Let&apos;s Build Something
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
+                <Link
+                  href="/contact-us"
+                  className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl bg-[var(--accent-color)] text-[var(--bg-primary)] hover:text-[var(--bg-primary)] font-bold text-sm tracking-wide shadow-[0_10px_20px_-5px_var(--accent-color)]/30 hover:shadow-[0_15px_30px_-5px_var(--accent-color)]/45 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2 group"
+                >
+                  Let&apos;s Build Something
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
 
-              <a
-                href="#work"
-                className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--text-secondary)] text-[var(--text-primary)] hover:text-[var(--text-title)] font-bold text-sm tracking-wide hover:bg-[var(--bg-secondary)]/50 transition-all duration-300 active:scale-[0.98] cursor-pointer"
-              >
-                Explore Work
-              </a>
-            </div>
-          </motion.div>
-        </section>
+                <a
+                  href="#work"
+                  className="px-6 py-3.5 md:px-7 md:py-4 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--text-secondary)] text-[var(--text-primary)] hover:text-[var(--text-title)] font-bold text-sm tracking-wide hover:bg-[var(--bg-secondary)]/50 transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                >
+                  Explore Work
+                </a>
+              </div>
+            </motion.div>
+          </section>
 
-        <section id="work" className="w-full py-12">
-          <div className="cards-content">
+          <section id="work" className="w-full py-16 md:py-24 border-t border-[var(--border-primary)] mt-8 md:mt-16">
+            <div className="cards-content">
             <ProjectCard
               title="AI Architect"
               subtitle="Custom Code"
@@ -207,44 +207,44 @@ export default function HomePageClient() {
             >
               <MobileMockup />
             </ProjectCard>
-          </div>
-        </section>
+            </div>
+          </section>
 
-        <section id="play" className="w-full py-16 md:py-28 flex flex-col items-center">
-          <div className="text-center max-w-2xl flex flex-col items-center gap-4 mb-16 selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
-            <h2 className="text-4xl md:text-7xl font-black text-[var(--text-title)] leading-none">
-              In Progress.
-            </h2>
-            <p className="text-xs md:text-sm leading-relaxed text-[var(--text-secondary)] font-medium max-w-md">
-              Work in various states of design and development, from side projects,
-              to in-flight product design and development.
-            </p>
-          </div>
+          <section id="play" className="w-full py-16 md:py-24 border-t border-[var(--border-primary)] mt-8 md:mt-16 flex flex-col items-center">
+            <div className="text-center max-w-2xl flex flex-col items-center gap-4 mb-16 selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
+              <h2 className="text-4xl md:text-7xl font-black text-[var(--text-title)] leading-none">
+                In Progress.
+              </h2>
+              <p className="text-xs md:text-sm leading-relaxed text-[var(--text-secondary)] font-medium max-w-md">
+                Work in various states of design and development, from side projects,
+                to in-flight product design and development.
+              </p>
+            </div>
 
-          <div className="cards-content w-full">
-            <ProjectCard
-              title="CI/CD Pipeline"
-              subtitle="Build Systems"
-              bgColor="bg-white"
-              textColor="text-slate-900"
-              gridStart={1}
-              gridSpan={15}
-            >
-              <DoodlerMockup />
-            </ProjectCard>
+            <div className="cards-content w-full">
+              <ProjectCard
+                title="CI/CD Pipeline"
+                subtitle="Build Systems"
+                bgColor="bg-white"
+                textColor="text-slate-900"
+                gridStart={1}
+                gridSpan={15}
+              >
+                <DoodlerMockup />
+              </ProjectCard>
 
-            <ProjectCard
-              title="Core Stack"
-              subtitle="Modern Technologies"
-              bgColor="bg-[#1c1c1c]"
-              textColor="text-white"
-              gridStart={17}
-              gridSpan={9}
-            >
-              <DropletteMockup />
-            </ProjectCard>
-          </div>
-        </section>
+              <ProjectCard
+                title="Core Stack"
+                subtitle="Modern Technologies"
+                bgColor="bg-[#1c1c1c]"
+                textColor="text-white"
+                gridStart={17}
+                gridSpan={9}
+              >
+                <DropletteMockup />
+              </ProjectCard>
+            </div>
+          </section>
 
           <FaqSection />
           <CtaSection />

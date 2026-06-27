@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/hooks/useTheme";
-import FloatingStars from "@/components/FloatingStars";
+import FloatingStars from "@/components/ui/FloatingStars";
 import Link from "next/link";
 
 interface Phase {
