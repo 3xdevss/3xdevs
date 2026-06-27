@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import FloatingStars from "@/components/FloatingStars";
+import { motion } from "framer-motion";
 
 export default function PrebuiltPageClient() {
   const principles = [
@@ -34,26 +35,33 @@ export default function PrebuiltPageClient() {
           PREBUILT
         </div>
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none z-10">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-pill-active-dot)] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--theme-pill-active-dot)]"></span>
-          </span>
-          <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-            Our Engineering Philosophy
-          </span>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center gap-6 relative z-10 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-pill-active-dot)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--theme-pill-active-dot)]"></span>
+            </span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+              Our Engineering Philosophy
+            </span>
+          </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.05] text-[var(--text-title)] font-display z-10">
-          No Templates. <br className="xs:hidden" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--theme-text-highlight-from)] to-[var(--theme-text-highlight-to)] drop-shadow-[0_4px_10px_rgba(255,255,255,0.05)]">
-            Just Bespoke.
-          </span>
-        </h1>
+          <h1 className="text-5xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.05] text-[var(--text-title)] font-display">
+            No Templates. <br className="xs:hidden" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--theme-text-highlight-from)] to-[var(--theme-text-highlight-to)] drop-shadow-[0_4px_10px_rgba(255,255,255,0.05)]">
+              Just Bespoke.
+            </span>
+          </h1>
 
-        <p className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl px-4 z-10">
-          Every line of code, database query, and custom animation we write is engineered from scratch to fit your exact business goals.
-        </p>
+          <p className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl px-4">
+            Every line of code, database query, and custom animation we write is engineered from scratch to fit your exact business goals.
+          </p>
+        </motion.div>
       </section>
 
       {/* Philosophy Principles Grid */}

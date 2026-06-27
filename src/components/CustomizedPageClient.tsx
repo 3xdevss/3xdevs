@@ -202,26 +202,33 @@ export default function CustomizedPageClient() {
           PROCESS
         </div>
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none z-10">
-          <span className="relative flex h-2 w-2">
-            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${themeStyles.pillActiveDot} opacity-75`}></span>
-            <span className={`relative inline-flex rounded-full h-2 w-2 ${themeStyles.pillActiveDot}`}></span>
-          </span>
-          <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-            How We Partner With You
-          </span>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center gap-6 relative z-10 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
+            <span className="relative flex h-2 w-2">
+              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${themeStyles.pillActiveDot} opacity-75`}></span>
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${themeStyles.pillActiveDot}`}></span>
+            </span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+              How We Partner With You
+            </span>
+          </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.05] text-[var(--text-title)] font-display z-10">
-          From Concept <br className="xs:hidden" /> to{" "}
-          <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeStyles.textHighlight} drop-shadow-[0_4px_10px_rgba(255,255,255,0.05)]`}>
-            Launch
-          </span>
-        </h1>
+          <h1 className="text-5xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.05] text-[var(--text-title)] font-display">
+            From Concept <br className="xs:hidden" /> to{" "}
+            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeStyles.textHighlight} drop-shadow-[0_4px_10px_rgba(255,255,255,0.05)]`}>
+              Launch
+            </span>
+          </h1>
 
-        <p className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl px-4 z-10">
-          A transparent, iterative development workflow built to translate your business ideas into pixel-perfect web and mobile experiences. Click on any card below to explore a phase.
-        </p>
+          <p className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-medium max-w-2xl px-4">
+            A transparent, iterative development workflow built to translate your business ideas into pixel-perfect web and mobile experiences. Click on any card below to explore a phase.
+          </p>
+        </motion.div>
       </section>
 
       {/* Main Process Section (Adaptive Cards based on sample) */}
