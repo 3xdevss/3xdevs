@@ -159,98 +159,19 @@ export default function CustomizedPageClient() {
     };
   }, []);
 
-  // Dynamic theme colors helper
-  const getThemeStyles = (theme: string, isDark: boolean) => {
-    if (isDark) {
-      switch (theme) {
-        case "violet":
-          return {
-            glowClass: "from-purple-600/30 via-purple-900/10 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-purple-500/30",
-            activeBorder: "border-purple-500/60 shadow-[0_0_30px_rgba(143,76,176,0.15)]",
-            accentText: "text-purple-300",
-            badgeBg: "bg-purple-500/15 text-purple-300 border-purple-500/20",
-            buttonBg: "bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white shadow-[0_10px_20px_-5px_rgba(143,76,176,0.4)]",
-            textHighlight: "from-purple-300 to-fuchsia-400",
-            pillActiveDot: "bg-purple-400",
-            cardBg: "bg-[#180f24]/50",
-            borderHighlight: "border-purple-500/50",
-          };
-        case "indigo":
-          return {
-            glowClass: "from-indigo-600/30 via-indigo-900/10 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-indigo-500/30",
-            activeBorder: "border-indigo-500/60 shadow-[0_0_30px_rgba(76,118,176,0.15)]",
-            accentText: "text-indigo-300",
-            badgeBg: "bg-indigo-500/15 text-indigo-300 border-indigo-500/20",
-            buttonBg: "bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_10px_20px_-5px_rgba(76,118,176,0.4)]",
-            textHighlight: "from-indigo-300 to-blue-400",
-            pillActiveDot: "bg-indigo-400",
-            cardBg: "bg-[#0f1524]/50",
-            borderHighlight: "border-indigo-500/50",
-          };
-        case "emerald":
-        default:
-          return {
-            glowClass: "from-emerald-600/30 via-emerald-950/10 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-emerald-500/30",
-            activeBorder: "border-emerald-500/60 shadow-[0_0_30px_rgba(155,240,201,0.15)]",
-            accentText: "text-emerald-300",
-            badgeBg: "bg-emerald-500/15 text-emerald-300 border-emerald-500/20",
-            buttonBg: "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-[0_10px_20px_-5px_rgba(155,240,201,0.4)]",
-            textHighlight: "from-[#abf7da] to-emerald-400",
-            pillActiveDot: "bg-emerald-400",
-            cardBg: "bg-[#121c17]/50",
-            borderHighlight: "border-emerald-500/50",
-          };
-      }
-    } else {
-      switch (theme) {
-        case "violet":
-          return {
-            glowClass: "from-purple-100/70 via-purple-50/20 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-purple-300",
-            activeBorder: "border-purple-400 shadow-[0_10px_35px_rgba(143,76,176,0.12)]",
-            accentText: "text-[#8f4cb0]",
-            badgeBg: "bg-purple-100/80 text-[#8f4cb0] border-purple-200/50",
-            buttonBg: "bg-[#8f4cb0] hover:bg-[#7b3e99] text-white shadow-[0_10px_25px_-5px_rgba(143,76,176,0.3)]",
-            textHighlight: "from-[#8f4cb0] to-purple-800",
-            pillActiveDot: "bg-[#8f4cb0]",
-            cardBg: "bg-white/80",
-            borderHighlight: "border-purple-300",
-          };
-        case "indigo":
-          return {
-            glowClass: "from-indigo-100/70 via-indigo-50/20 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-indigo-300",
-            activeBorder: "border-indigo-400 shadow-[0_10px_35px_rgba(76,118,176,0.12)]",
-            accentText: "text-[#4c76b0]",
-            badgeBg: "bg-indigo-100/80 text-[#4c76b0] border-indigo-200/50",
-            buttonBg: "bg-[#4c76b0] hover:bg-[#3d6294] text-white shadow-[0_10px_25px_-5px_rgba(76,118,176,0.3)]",
-            textHighlight: "from-[#4c76b0] to-indigo-800",
-            pillActiveDot: "bg-[#4c76b0]",
-            cardBg: "bg-white/80",
-            borderHighlight: "border-indigo-300",
-          };
-        case "emerald":
-        default:
-          return {
-            glowClass: "from-emerald-100/70 via-emerald-50/20 to-transparent",
-            glowBorder: "border-[var(--pill-border)] hover:border-emerald-300",
-            activeBorder: "border-emerald-400 shadow-[0_10px_35px_rgba(59,122,87,0.12)]",
-            accentText: "text-[#3b7a57]",
-            badgeBg: "bg-emerald-100/80 text-[#3b7a57] border-emerald-200/50",
-            buttonBg: "bg-[#3b7a57] hover:bg-[#2d5f43] text-white shadow-[0_10px_25px_-5px_rgba(59,122,87,0.3)]",
-            textHighlight: "from-[#3b7a57] to-emerald-800",
-            pillActiveDot: "bg-[#3b7a57]",
-            cardBg: "bg-white/80",
-            borderHighlight: "border-emerald-300",
-          };
-      }
-    }
+  // Theme styles configured through static CSS variable references
+  const themeStyles = {
+    glowClass: "from-[var(--theme-glow-from)] via-[var(--theme-glow-via)] to-transparent",
+    glowBorder: "border-[var(--pill-border)] hover:border-[var(--theme-glow-border-hover)]",
+    activeBorder: "border-[var(--theme-active-border-color)] shadow-[var(--theme-active-border-shadow)]",
+    accentText: "text-[var(--theme-accent-text)]",
+    badgeBg: "bg-[var(--theme-badge-bg)] text-[var(--theme-badge-text)] border-[var(--theme-badge-border)]",
+    buttonBg: "theme-button",
+    textHighlight: "from-[var(--theme-text-highlight-from)] to-[var(--theme-text-highlight-to)]",
+    pillActiveDot: "bg-[var(--theme-pill-active-dot)]",
+    cardBg: "bg-[var(--theme-card-bg)]",
+    borderHighlight: "border-[var(--theme-border-highlight)]",
   };
-
-  const themeStyles = getThemeStyles(themeMode, isDarkMode);
   const activePhase = phases.find((p) => p.id === activeTab) || phases[0];
   const activeIdx = phases.findIndex((p) => p.id === activeTab);
 
