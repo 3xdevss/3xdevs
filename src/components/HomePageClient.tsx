@@ -97,21 +97,22 @@ export default function HomePageClient() {
     >
       <Header />
 
-      <main className="w-full max-w-[1280px] px-4 sm:px-6 md:px-12 flex-1 flex flex-col items-center relative z-10 mt-2">
+      <main className="w-full max-w-[1280px] px-6 md:px-12 flex-1 flex flex-col items-center justify-center relative z-10">
         <FloatingStars />
+        <div className="w-full relative py-6">
 
-        {/* Hero Section */}
-        <section className="w-full flex flex-col items-center text-center gap-6 md:gap-7 pt-40 md:pt-48 pb-16 md:pb-24 relative z-10 selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
-          <div className="absolute top-[14.5%] md:top-[8%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none contact-watermark">
-            3xDevs
-          </div>
+          {/* Hero Section */}
+          <section className="text-center pt-42 md:pt-50 pb-16 max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10 selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
+            <div className="absolute top-[128px] md:top-[11%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none contact-watermark">
+              3xDevs
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex flex-col items-center text-center gap-6 md:gap-7 relative z-10 w-full"
-          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex flex-col items-center gap-6 relative z-10 text-center"
+            >
             {/* Tech Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--pill-border)] bg-[var(--bg-primary)]/40 backdrop-blur-sm shadow-sm select-none">
               <span className="relative flex h-2 w-2">
@@ -245,8 +246,9 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <FaqSection />
-        <CtaSection />
+          <FaqSection />
+          <CtaSection />
+        </div>
       </main>
 
       <Footer showLinks />

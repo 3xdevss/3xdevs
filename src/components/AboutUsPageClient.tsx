@@ -103,7 +103,7 @@ export default function AboutUsPageClient() {
       {/* Hero Section */}
       <section className="text-center pt-42 md:pt-50 pb-16 max-w-4xl mx-auto flex flex-col items-center gap-6 relative selection:bg-[var(--accent-color)] selection:text-[var(--bg-primary)]">
         {/* Background Watermark */}
-        <div className="absolute top-[23%] md:top-[11%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center contact-watermark">
+        <div className="absolute top-[128px] md:top-[11%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none contact-watermark">
           ABOUT
         </div>
 

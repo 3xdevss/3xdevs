@@ -2,6 +2,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomizedPageClient from "@/components/CustomizedPageClient";
+import FloatingStars from "@/components/FloatingStars";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function CustomizedPage() {
       <Header />
 
       <main className="w-full max-w-[1280px] px-6 md:px-12 flex-1 flex flex-col items-center justify-center relative z-10">
+        <FloatingStars />
         <CustomizedPageClient />
       </main>
 
