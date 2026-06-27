@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/hooks/useTheme";
 import FloatingStars from "@/components/FloatingStars";
@@ -132,6 +132,32 @@ export default function CustomizedPageClient() {
   const { themeMode, isDarkMode } = useTheme();
   const [activeTab, setActiveTab] = useState<string>("discovery");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [cooldownActive, setCooldownActive] = useState(false);
+  const cooldownTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isHovered || cooldownActive) return;
+
+    const timer = setInterval(() => {
+      setActiveTab((prev) => {
+        const currentIndex = phases.findIndex((p) => p.id === prev);
+        const nextIndex = (currentIndex + 1) % phases.length;
+        return phases[nextIndex].id;
+      });
+    }, 4000); // cycle through phases every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [isHovered, cooldownActive]);
+
+  // Clean up timers on unmount
+  useEffect(() => {
+    return () => {
+      if (cooldownTimerRef.current) {
+        clearTimeout(cooldownTimerRef.current);
+      }
+    };
+  }, []);
 
   // Dynamic theme colors helper
   const getThemeStyles = (theme: string, isDark: boolean) => {
@@ -226,9 +252,19 @@ export default function CustomizedPageClient() {
 
   const themeStyles = getThemeStyles(themeMode, isDarkMode);
   const activePhase = phases.find((p) => p.id === activeTab) || phases[0];
+  const activeIdx = phases.findIndex((p) => p.id === activeTab);
 
   const handleCardClick = (id: string) => {
     setActiveTab(id);
+
+    // Set 20 seconds cooldown before resuming auto-play
+    setCooldownActive(true);
+    if (cooldownTimerRef.current) {
+      clearTimeout(cooldownTimerRef.current);
+    }
+    cooldownTimerRef.current = setTimeout(() => {
+      setCooldownActive(false);
+    }, 20000); // 20000ms = 20 seconds
   };
 
   const toggleFaq = (index: number) => {
@@ -268,7 +304,11 @@ export default function CustomizedPageClient() {
       </section>
 
       {/* Main Process Section (Adaptive Cards based on sample) */}
-      <section className="w-full py-8 md:py-16">
+      <section
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full py-8 md:py-16"
+      >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black text-[var(--text-title)] font-display leading-none mb-4">
             Our Development Roadmap
@@ -289,8 +329,8 @@ export default function CustomizedPageClient() {
                 layout
                 onClick={() => handleCardClick(phase.id)}
                 className={`relative rounded-[28px] p-6 sm:p-7 border transition-all duration-500 ease-out cursor-pointer flex flex-col justify-between overflow-hidden group select-none h-full min-h-[300px] md:min-h-[340px] ${isActive
-                    ? `${themeStyles.cardBg} ${themeStyles.activeBorder}`
-                    : `bg-[var(--bg-secondary)]/20 ${themeStyles.glowBorder}`
+                  ? `${themeStyles.cardBg} ${themeStyles.activeBorder}`
+                  : `bg-[var(--bg-secondary)]/20 ${themeStyles.glowBorder}`
                   }`}
                 whileHover={{ y: isActive ? 0 : -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -386,8 +426,8 @@ export default function CustomizedPageClient() {
             className="absolute left-[8%] h-[2px] bg-[var(--accent-color)] top-1/2 -translate-y-1/2 z-0 transition-all duration-700 ease-out"
             style={{
               width: `${activeTab === "discovery" ? "0%" :
-                  activeTab === "design" ? "28%" :
-                    activeTab === "development" ? "55%" : "84%"
+                activeTab === "design" ? "28%" :
+                  activeTab === "development" ? "55%" : "84%"
                 }`
             }}
           />
@@ -402,13 +442,13 @@ export default function CustomizedPageClient() {
               <div
                 key={phase.id}
                 className={`relative w-8 h-8 rounded-full border-2 bg-[var(--bg-primary)] z-10 flex items-center justify-center transition-all duration-500 ${activeTab === phase.id
-                    ? `border-[var(--accent-color)] scale-110 shadow-[0_0_12px_var(--accent-color)]`
-                    : isPassedOrActive ? `border-[var(--accent-color)]` : `border-[var(--border-primary)]`
+                  ? `border-[var(--accent-color)] scale-110 shadow-[0_0_12px_var(--accent-color)]`
+                  : isPassedOrActive ? `border-[var(--accent-color)]` : `border-[var(--border-primary)]`
                   }`}
               >
                 <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${activeTab === phase.id
-                    ? `bg-[var(--accent-color)]`
-                    : isPassedOrActive ? `bg-[var(--accent-color)]/60` : `bg-transparent`
+                  ? `bg-[var(--accent-color)]`
+                  : isPassedOrActive ? `bg-[var(--accent-color)]/60` : `bg-transparent`
                   }`} />
               </div>
             );
