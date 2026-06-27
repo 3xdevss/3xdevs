@@ -14,13 +14,12 @@ export default function Footer({ showLinks = true }: FooterProps) {
     setThemeMode,
     setTickIndex,
     isDarkMode,
-    tickLabelColor,
   } = useTheme();
 
   return (
     <footer className="w-full max-w-[1280px] px-6 md:px-12 mt-16 md:mt-24 pt-12 border-t border-white/5 relative z-10">
       {showLinks && (
-        <div className={`flex flex-col md:flex-row justify-between gap-12 text-sm ${isDarkMode ? "text-emerald-100/60" : "text-emerald-900/60"} font-medium mb-16`}>
+        <div className="flex flex-col md:flex-row justify-between gap-12 text-sm text-[var(--text-secondary)] font-medium mb-16">
           <div className="flex flex-col gap-1.5 select-none">
             <p className={`${isDarkMode ? "text-white" : "text-[#2d2c2a]"} text-base font-semibold`}>3xdevs</p>
             <p className={isDarkMode ? "hover:text-white" : "hover:text-[#2d2c2a]"}>Not just devs</p>
@@ -97,7 +96,7 @@ export default function Footer({ showLinks = true }: FooterProps) {
         </div>
 
         <div className="flex items-center gap-3">
-          <span className={`text-[10px] font-bold ${tickLabelColor} uppercase tracking-wider`}>Theme Mode</span>
+          <span className="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-wider">Theme Mode</span>
           <button
             onClick={() => setTickIndex(isDarkMode ? 0 : 11)}
             className={`relative w-12 h-7 rounded-full transition-all duration-300 focus:outline-none cursor-pointer hover:scale-105 active:scale-95 ${

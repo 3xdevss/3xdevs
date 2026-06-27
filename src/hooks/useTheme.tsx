@@ -10,11 +10,7 @@ interface ThemeContextProps {
   tickIndex: number;
   setTickIndex: (index: number) => void;
   isDarkMode: boolean;
-  heroTextColor: string;
-  secondaryTextColor: string;
-  tickActiveColor: string;
-  tickInactiveColor: string;
-  tickLabelColor: string;
+  hasSynced: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -66,35 +62,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTickIndexState(index);
   };
 
-  // Dynamic colors based on themeMode and isDarkMode
-  const heroTextColor = themeMode === "emerald"
-    ? (isDarkMode ? "text-[#abf7da]" : "text-[#2d2c2a]")
-    : themeMode === "violet"
-    ? (isDarkMode ? "text-[#e9cbf7]" : "text-[#2d2630]")
-    : (isDarkMode ? "text-[#cbdbf7]" : "text-[#262a30]");
-
-  const secondaryTextColor = themeMode === "emerald"
-    ? (isDarkMode ? "text-emerald-100/70" : "text-emerald-900/70")
-    : themeMode === "violet"
-    ? (isDarkMode ? "text-purple-100/70" : "text-purple-900/70")
-    : (isDarkMode ? "text-indigo-100/70" : "text-indigo-900/70");
-
-  const tickActiveColor = themeMode === "emerald"
-    ? (isDarkMode ? "bg-[#abf7da]" : "bg-[#3b7a57]")
-    : themeMode === "violet"
-    ? (isDarkMode ? "bg-[#e9cbf7]" : "bg-[#8f4cb0]")
-    : (isDarkMode ? "bg-[#cbdbf7]" : "bg-[#4c76b0]");
-
-  const tickInactiveColor = isDarkMode
-    ? "bg-white/30 hover:bg-white/70"
-    : "bg-black/20 hover:bg-black/40";
-
-  const tickLabelColor = themeMode === "emerald"
-    ? (isDarkMode ? "text-[#abf7da]" : "text-[#3b7a57]")
-    : themeMode === "violet"
-    ? (isDarkMode ? "text-[#e9cbf7]" : "text-[#8f4cb0]")
-    : (isDarkMode ? "text-[#cbdbf7]" : "text-[#4c76b0]");
-
   return (
     <ThemeContext.Provider
       value={{
@@ -103,11 +70,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         tickIndex,
         setTickIndex,
         isDarkMode,
-        heroTextColor,
-        secondaryTextColor,
-        tickActiveColor,
-        tickInactiveColor,
-        tickLabelColor,
+        hasSynced,
       }}
     >
       {children}

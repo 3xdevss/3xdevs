@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingStars from "@/components/FloatingStars";
-import ContactForm from "@/components/ContactForm";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import FloatingStars from "@/components/ui/FloatingStars";
+import ContactForm from "@/components/pages/ContactForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function ContactUsPage() {
       <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-[50vw] h-[50vw] max-w-[500px] max-h-[500px] rounded-full bg-[var(--accent-color)] opacity-[0.08] lg:opacity-[0.02] dark:opacity-[0.08] blur-[100px] pointer-events-none z-0" />
 
       {/* Watermark "CONTACT" Text */}
-      <div className="absolute top-[26%] md:top-[7%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none hidden lg:block contact-watermark">
+      <div className="absolute top-[26%] md:top-[5.5%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 font-display font-black text-[12vw] tracking-wider leading-none text-center select-none hidden lg:block contact-watermark">
         CONTACT
       </div>
 
