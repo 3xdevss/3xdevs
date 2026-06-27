@@ -13,6 +13,8 @@ import {
   DropletteMockup,
 } from "@/components/Mockups";
 import { Metadata } from "next";
+import FaqSection from "@/components/FaqSection";
+import CtaSection from "@/components/CtaSection";
 
 export const metadata: Metadata = {
   title: "3xdevs | Custom Software & Web Development",
@@ -235,6 +237,9 @@ export default function Home() {
             </ProjectCard>
           </div>
         </section>
+
+        <FaqSection />
+        <CtaSection />
       </main>
 
       <Footer showLinks />
