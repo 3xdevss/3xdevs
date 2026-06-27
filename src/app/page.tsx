@@ -151,8 +151,8 @@ export default function Home() {
         <section id="work" className="w-full py-12">
           <div className="cards-content">
             <ProjectCard
-              title="AI"
-              subtitle="Help Scout"
+              title="AI Architect"
+              subtitle="Custom Code"
               bgColor="bg-[#c099e3]"
               textColor="text-[#2b173d]"
               gridStart={1}
@@ -163,8 +163,8 @@ export default function Home() {
             </ProjectCard>
 
             <ProjectCard
-              title="Articles"
-              subtitle="Help Scout"
+              title="Cloud Monitor"
+              subtitle="System Health"
               bgColor="bg-[#a4ebd9]"
               textColor="text-[#103b30]"
               gridStart={11}
@@ -175,8 +175,8 @@ export default function Home() {
             </ProjectCard>
 
             <ProjectCard
-              title="Plugins"
-              subtitle="Figma"
+              title="API Pipelines"
+              subtitle="System Design"
               bgColor="bg-[#f4be9b]"
               textColor="text-[#4f2a11]"
               gridStart={1}
@@ -187,8 +187,8 @@ export default function Home() {
             </ProjectCard>
 
             <ProjectCard
-              title="Mobile"
-              subtitle="Help Scout"
+              title="DevOps Console"
+              subtitle="Automated Deployments"
               bgColor="bg-[#a3d8f4]"
               textColor="text-[#12384c]"
               gridStart={17}
@@ -213,8 +213,8 @@ export default function Home() {
 
           <div className="cards-content w-full">
             <ProjectCard
-              title="Doodler"
-              subtitle="Multiplayer"
+              title="CI/CD Pipeline"
+              subtitle="Build Systems"
               bgColor="bg-white"
               textColor="text-slate-900"
               gridStart={1}
@@ -224,8 +224,8 @@ export default function Home() {
             </ProjectCard>
 
             <ProjectCard
-              title="Droplette"
-              subtitle="Figma"
+              title="Core Stack"
+              subtitle="Modern Technologies"
               bgColor="bg-[#1c1c1c]"
               textColor="text-white"
               gridStart={17}
