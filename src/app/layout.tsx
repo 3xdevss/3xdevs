@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/hooks/useTheme";
 import FloatingRobot from "@/components/FloatingRobot";
+import CursorGlow from "@/components/CursorGlow";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -53,6 +54,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <FloatingRobot />
+          <CursorGlow />
         </ThemeProvider>
       </body>
     </html>
